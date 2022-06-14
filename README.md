@@ -1,2 +1,2 @@
 # react_recoil_todo
-React / React Query / Recoil / Styled-components
+React / Recoil / Styled-components
