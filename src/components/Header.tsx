@@ -1,6 +1,6 @@
 import { motion, useAnimation, useViewportScroll } from "framer-motion";
 import { useEffect, useState } from "react";
-import { useLocation, useMatch } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
@@ -13,6 +13,7 @@ const Nav = styled(motion.nav)`
   padding: 20px 60px;
   background-color: rgba(0,0,0,1);
   width: 100%;
+  background-image: linear-gradient(rgba(0,0,0,1), rgba(0,0,0,0));
 `;
 
 const Column = styled(motion.div)`
@@ -36,14 +37,14 @@ const LinkLists = styled.ul`
 `;
 
 const LinkList = styled(motion.li)`
-  color: ${props => props.theme.white.darker};
+  color: ${props => props.theme.default.darker};
   transition: color 0.3s ease-in-out;
   position: relative;
   &:not(:last-of-type) {
     margin-right: 20px;
   }
   &:hover {
-    color: ${(props) => props.theme.white.lighter};
+    color: ${(props) => props.theme.default.lighter};
   }
 `;
 
@@ -100,8 +101,8 @@ const Header = () => {
   const [searchOn, setSearchOn] = useState(false);
   const { scrollY } = useViewportScroll();
   const navAnimation = useAnimation();
-  const homeMatch = navigate.pathname === "/";
-  const tvMatch = navigate.pathname === "/tv";
+  const homeMatch = navigate.pathname === "/react_challenge_final/";
+  const tvMatch = navigate.pathname === "/react_challenge_final/tv";
 
   const toggleSearchBar = () => {
     setSearchOn(prev => !prev);
@@ -133,13 +134,13 @@ const Header = () => {
         </Logo>
         <LinkLists>
           <LinkList>
-            <Link to="/">
+            <Link to="/react_challenge_final/">
               Home
               {homeMatch && <Indicator layoutId="indicator"/>}
             </Link>
           </LinkList>
           <LinkList>
-            <Link to="/tv">
+            <Link to="/react_challenge_final/tv">
               TV
               {tvMatch && <Indicator layoutId="indicator"/>}
               </Link>

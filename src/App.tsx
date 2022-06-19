@@ -3,19 +3,15 @@ import Header from "./components/Header";
 import Home from "./components/Home";
 import Search from "./components/Search";
 import Tv from "./components/Tv";
-import getMovies from "./api";
-import { useQuery } from 'react-query';
 
 function App() {
-  const { data: movieData, isLoading } = useQuery(["movies", "nowPlaying"], getMovies);
-  console.log(movieData, isLoading);
   return (
     <BrowserRouter>
       <Header />
       <Routes>
-        <Route path="/tv" element={<Tv />} />
-        <Route path="/search" element={<Search />} />
-        <Route path="/" element={<Home />} />
+        <Route path="/react_challenge_final/tv" element={<Tv />} />
+        <Route path="/react_challenge_final/search" element={<Search />} />
+        <Route path="/react_challenge_final/" element={<Home />} />
       </Routes>
     </BrowserRouter>
   );
