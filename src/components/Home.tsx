@@ -167,7 +167,7 @@ const Home = () => {
                     .map((movie) => (
                       <MoviePanel
                         key={movie.id}
-                        bgimg={getMovieImg(movie.backdrop_path).includes('null') ? "https://github.com/tyomhk2015/react_challenge_final/blob/develop/src/image/noimage.png" : getMovieImg(movie.backdrop_path, "w300")}
+                        bgimg={getMovieImg(movie.backdrop_path).includes('null') ? "https://raw.githubusercontent.com/tyomhk2015/react_challenge_final/main/src/image/noimage.png" : getMovieImg(movie.backdrop_path, "w300")}
                       />
                     ))}
                 </Row>
