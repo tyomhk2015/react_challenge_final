@@ -28,10 +28,10 @@ export const getMovies = async () => {
 }
 
 export const getLatestMovies = async () => {
-  const { id: latestMovieId } = await fetch(`${BASE_URL}/movie/latest?api_key=${TEMP.join('')}&language=en-US&page=2`).then((response) => response.json());
+  const { id: latestMovieId } = await fetch(`${BASE_URL}/movie/latest?api_key=${TEMP.join('')}&language=en-US`).then((response) => response.json());
   const latestMovies: IMovie[] = [];
   for (let index = 0; index < movieQuantity; index++) {
-    const latestMovie = await fetch(`${BASE_URL}/movie/${latestMovieId - index}?api_key=${TEMP.join('')}&language=en-US&page=2`).then((response) => response.json());
+    const latestMovie = await fetch(`${BASE_URL}/movie/${latestMovieId - index}?api_key=${TEMP.join('')}&language=en-US`).then((response) => response.json());
     latestMovies.push(latestMovie);
   }
   return latestMovies;

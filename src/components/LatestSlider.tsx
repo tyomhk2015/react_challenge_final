@@ -24,14 +24,25 @@ const MoviePanel = styled(motion.div)<{ bgimg: string }>`
   background-size: cover;
   background-position: center;
   height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
 `;
 
-const MovieCategory = styled.h3`
+const MovieTitle = styled.h3`
   padding: 0 60px;
   color: ${(props) => props.theme.default.textColor};
   font-size: 2rem;
   margin-top: 2rem;
   text-decoration: underline;
+  & > small {
+    font-size: 12px;
+    margin-left: 20px;
+    font-weight: normal;
+    text-decoration: none;
+  }
 `;
 
 const rowVariants = {
@@ -68,7 +79,7 @@ const LatestSlider = () => {
   const toggleLeaving = () => setLeaving((prev) => !prev);
   return (
     <>
-      <MovieCategory>Latest</MovieCategory>
+      <MovieTitle>Latest<small>*Sucessfully got latest movies, but API rarely provide path for images.</small></MovieTitle>
       <Slider onClick={showNextSlide}>
         <AnimatePresence initial={false} onExitComplete={toggleLeaving}>
           <Row
@@ -90,7 +101,9 @@ const LatestSlider = () => {
                         ? "https://raw.githubusercontent.com/tyomhk2015/react_challenge_final/main/src/image/noimage.png"
                         : getMovieImg(movie.backdrop_path, "w300")
                     }
-                  />
+                  >
+                    {movie.title}
+                  </MoviePanel>
                 ))}
           </Row>
         </AnimatePresence>
