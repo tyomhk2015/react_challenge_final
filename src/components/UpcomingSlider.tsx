@@ -68,7 +68,7 @@ const UpcomingSlider = () => {
   const toggleLeaving = () => setLeaving((prev) => !prev);
   return (
     <>
-      <MovieCategory>Upcomming</MovieCategory>
+      <MovieCategory>Upcoming</MovieCategory>
       <Slider onClick={showNextSlide}>
         <AnimatePresence initial={false} onExitComplete={toggleLeaving}>
           <Row
