@@ -28,13 +28,23 @@ export const getMovies = async () => {
 }
 
 export const getLatestMovies = async () => {
-  const { id: latestMovieId } = await fetch(`${BASE_URL}/movie/latest?api_key=${TEMP.join('')}&language=en-US&page=2`).then((response) => response.json());
-  const latestMovies: any = [];
+  const { id: latestMovieId } = await fetch(`${BASE_URL}/movie/latest?api_key=${TEMP.join('')}&language=en-US`).then((response) => response.json());
+  const latestMovies: IMovie[] = [];
   for (let index = 0; index < movieQuantity; index++) {
-    const latestMovie = await fetch(`${BASE_URL}/movie/${latestMovieId - index}?api_key=${TEMP.join('')}&language=en-US&page=2`).then((response) => response.json());
+    const latestMovie = await fetch(`${BASE_URL}/movie/${latestMovieId - index}?api_key=${TEMP.join('')}&language=en-US`).then((response) => response.json());
     latestMovies.push(latestMovie);
   }
   return latestMovies;
+}
+
+export const getTopRatedMovies = async () => {
+  const topRatedMovieData = await fetch(`${BASE_URL}/movie/top_rated?api_key=${TEMP.join('')}&language=en-US&page=1`).then((response) => response.json());
+  return topRatedMovieData.results.length >= movieQuantity ? topRatedMovieData.results.slice(0, movieQuantity) : topRatedMovieData.results ;
+}
+
+export const getUpcomingMovies = async () => {
+  const upcomingMovieData = await fetch(`${BASE_URL}/movie/upcoming?api_key=${TEMP.join('')}&language=en-US&page=1`).then((response) => response.json());
+  return upcomingMovieData.results.length >= movieQuantity ? upcomingMovieData.results.slice(0, movieQuantity) : upcomingMovieData.results ;
 }
 
 export const getMovieImg = (URI: string, format?: string) => {

@@ -101,7 +101,7 @@ const Header = () => {
   const [searchOn, setSearchOn] = useState(false);
   const { scrollY } = useViewportScroll();
   const navAnimation = useAnimation();
-  const homeMatch = navigate.pathname === "/react_challenge_final/";
+  const homeMatch = navigate.pathname === "/react_challenge_final/" || navigate.pathname === "/react_challenge_final";
   const tvMatch = navigate.pathname === "/react_challenge_final/tv";
 
   const toggleSearchBar = () => {
